@@ -1,0 +1,27 @@
+package br.com.projeto.scicrop.excecao;
+
+public class Excecao extends Exception {
+	
+	
+	public static String tratarExcecao(Exception e){
+		
+		
+		if(e.getClass().getName().equals("java.lang.NumberFormatException")) {
+			return "Numero invalido";
+		}else if (e.getClass().getName().equals("javax.imageio.IIOException")){
+			return "Não foi possivel ler o arquivo";
+		}else if (e.getClass().getName().equals("java.io.FileNotFoundException:")){
+			return "Não encontrado";
+		}else {
+			return "Erro Desconhecido";
+		}
+	}
+	
+	
+	public static String tratarExcecao(){
+
+		return "Erro ao recortar imagem";
+	}
+	
+	
+}

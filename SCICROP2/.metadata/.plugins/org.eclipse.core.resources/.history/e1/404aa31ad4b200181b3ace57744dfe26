@@ -1,0 +1,8 @@
+package br.com.projeto.scicrop;
+
+public class Excecao {
+	
+	public static String tratarExcecao(Exception e) {
+		return "";
+	}
+}

@@ -1,0 +1,9 @@
+.formulario {
+	width:30%;
+	text-align: center;
+}
+
+.containerx{
+	display:flex;
+	justify-content: center;
+}

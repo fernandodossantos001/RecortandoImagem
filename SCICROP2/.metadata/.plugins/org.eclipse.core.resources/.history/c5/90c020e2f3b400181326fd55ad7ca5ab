@@ -1,0 +1,23 @@
+.formulario {
+	width:80%;
+	text-align: center;
+	background: #fff;
+}
+
+.containerx{
+	display:flex;
+	justify-content: center;
+	
+}
+
+body{
+	background: #f4f4f4;
+}
+
+.fundoform{
+	width:50%;
+	display: flex;
+	justify-content: center;
+	border: 1px solid #fff;
+	border-radius: 15%;
+}

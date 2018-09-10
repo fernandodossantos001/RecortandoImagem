@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SciCrop</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+	<div class="container containerx">
+		<div class="form-group formulario">
+		
+			<form action="recortarImagem" method="get">
+				<label style="text-align: center" for="caminhoImagem">Informe o caminho da Imagem : </label>
+				<input class="form-control" type="text" name="caminhoImagem" id="caminhoImagem" value="C:\Windows\Temp\java.png"/>	
+				<label for="ondeSalvar">Informe o lugar onde a imagem recortada deve ser salva</label>	
+				<input class="form-control" type="text" name="ondeSalvar" id="ondeSalvar" value="C:\Windows\Temp\NovoArquivoGeradoPeloJava" required/>
+
+				<label for="opcoes">Escolha o formato da imagem a ser salva</label>
+				<select  class="form-control" name="formato" id="opcoes">
+					<option value=".jpg">.jpg</option>
+					<option value=".gif">.gif</option>
+					<option value=".png">.png</option>
+				</select><br/><br/>
+			
+				<label for="">Informe a Largura da imagem em pixel</label>
+				<input class="form-control type="number" name="width" id="largura" value="100"/>
+				<label for="">Informe a Altura da imagem em pixel</label>
+				<input class="form-control type="number" name="height" id="altura" value="100"/><br/><br/>
+				
+				<input class="btn btn-primary mx-auto" type="submit" value="Recortar Imagem"/>
+			</form>
+		</div>
+	</div>
+	
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+package br.com.projeto.scicrop.web;
+
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+public class RecortaImagem {
+
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		String a = "C:\\Users\\Fernando\\Desktop\\corinthinas.png";
+		String b ="C:\\Users\\Fernando\\Desktop\\teste.jpg";
+		
+		File imagemOriginal = new File(a);
+
+		File imagemRecortada= new File(b);
+		recortar(imagemOriginal, imagemRecortada, 100, 100, "jpg");
+		
+	}
+	
+	public static void recortar(File caminhoImagemOriginal, File ondeSalvarImagemRecordata, int width, int height,String formatoImagem ) {
+		try {
+			//pegando imagem pelo  caminho dela, através do método read da Classe ImageIO onde se passa por parametro o caminho da imagem 
+			BufferedImage original = ImageIO.read(caminhoImagemOriginal);
+			
+			
+			
+			//aqui estou criando uma varias que ira armazenar a imagem recortada
+			//É possível passa no metodo construto da Classe BufferedImage como parametro a largura da imagem "width" a altura "height" e o tipo
+			//que precisa ser passado pegando como referencia a imagem original, pode ser pego o tipo atraves do metodo exemplo, original.getType() e assim passando por parametro
+			BufferedImage imagemRecortada = new BufferedImage(width, height, original.getType());
+			
+			Graphics2D g2 = imagemRecortada.createGraphics();
+			
+			//o primeiro parametro é a imagem original
+			//o segundo e o terceiro parametro sao as cordenada x e y
+			//o quarto parametro é a largura que você quer para a nova imagem
+			//o quinto parametro é a altura que você quer para a nova imagem
+			
+			g2.drawImage(original, 0, 0, width, height, null);
+			g2.dispose();
+			ImageIO.write(imagemRecortada,formatoImagem, ondeSalvarImagemRecordata);
+		} catch (IOException ex) {
+			// TODO: handle exception
+			ex.printStackTrace();
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// fim teste
+	
+//			File imagemOriginal = new File("C:\\Users\\Fernando\\Desktop\\corinthians.png");
+//			File imagemRecortada = new File("C:\\Users\\Fernando\\Desktop\\corinthians2.png");
+	
+//	public static void main(String[] args) {
+//		File caminhoImagemOriginal = new File("C:\\Users\\Fernando\\Desktop\\corinthians.png");
+//		File ondeSalvarImagem = new File("C:\\Users\\Fernando\\Desktop\\TesteFinal.png");
+//		
+//		RecortaImagem.recortar(caminhoImagemOriginal, ondeSalvarImagem, 100, 100, "png");
+//		
+//	}
+//					
+//		public static void recortar
+//				(File caminhoImagemOriginal, File ondeSalvarImagem, int width, int height, String formatoImagem) {
+//			if(caminhoImagemOriginal != null) {
+//			
+//				try {
+//					BufferedImage imagemOriginal = ImageIO.read(caminhoImagemOriginal);
+//					BufferedImage imagemRecortada = new BufferedImage(width, height, imagemOriginal.getType());
+//					Graphics2D g2 = imagemOriginal.createGraphics();
+//					g2.drawImage(imagemOriginal,0,0,width,height,null);
+//					g2.dispose();
+//					
+//					ImageIO.write(imagemRecortada, formatoImagem, ondeSalvarImagem);
+//					
+//				} catch (IOException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//				
+//				
+//			}//fim condição
+//		
+//			
+//		}
+		
+}

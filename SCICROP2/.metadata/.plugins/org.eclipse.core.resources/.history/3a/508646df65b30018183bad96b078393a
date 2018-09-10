@@ -1,0 +1,61 @@
+package br.com.projeto.scicrop.web;
+
+import java.io.File;
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet(urlPatterns="/recortarImagem")
+public class PegarDadosImagem extends HttpServlet {
+	
+	@Override
+	protected  void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String caminhoImagem;
+		String ondeSalvar;
+		String formato;
+		int largura;
+		int altura;
+		caminhoImagem = req.getParameter("caminhoImagem");		
+		ondeSalvar = req.getParameter("ondeSalvar");
+		formato = req.getParameter("formato");
+		largura = Integer.parseInt(req.getParameter("width"));
+		altura = Integer.parseInt(req.getParameter("height"));
+		ondeSalvar+= formato;
+		
+		if(caminhoImagem.trim().equalsIgnoreCase(null) || ondeSalvar.trim().equals(null) 
+				|| formato.equals(null || largura == 0 || altura == 0)) {
+			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/paginas/erro.jsp");
+		}
+		
+
+		
+		System.out.println("caminho " + caminhoImagem);
+		System.out.println("onde salvar"+ondeSalvar);
+		System.out.println("largura imagem" + largura);
+		System.out.println("altura imagem" + altura);
+
+		
+		File caminhoImagemOriginal = new File(caminhoImagem);
+		File ondeSalvarImagem = new File(ondeSalvar);
+		
+		RecortaImagem.recortar(caminhoImagemOriginal, ondeSalvarImagem, largura, altura, "jpg");
+	
+		System.out.println(caminhoImagem);
+		System.out.println(ondeSalvar);
+		
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/paginas/geradoComSucesso.jsp");
+		dispatcher.forward(req, resp);
+		
+	}
+	
+	
+	
+	
+
+	
+}

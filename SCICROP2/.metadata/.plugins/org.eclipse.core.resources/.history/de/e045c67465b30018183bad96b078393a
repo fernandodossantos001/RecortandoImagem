@@ -1,0 +1,6 @@
+package br.com.projeto.scicrop.excecao;
+
+public class Excecao extends Exception {
+	
+	
+}

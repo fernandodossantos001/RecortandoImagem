@@ -1,0 +1,58 @@
+package br.com.projeto.scicrop;
+
+
+import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
+import java.io.File;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+
+public class LendoImagem {
+	public static void main(String[] args) {
+		
+		
+		try {
+			
+			
+			///pegando a imagem do computador
+			BufferedImage originalImgage = ImageIO.read(new File("C:\\Users\\Fernando\\Desktop\\java.jpg"));
+			
+			
+			
+			
+			//escrevendo o tamanho da imagem
+			//System.out.println("Original Image Dimension: "+originalImgage.getWidth()+"x"+originalImgage.getHeight());
+		
+			//criando uma cópia da imagem
+			ImageIO.write(originalImgage, "PNG", new File("C:\\Users\\Fernando\\Desktop\\pmariabonita3.png"));
+			
+			
+			System.out.println("O tamanho da imagem é " + originalImgage.getWidth()+"x" + originalImgage.getHeight());
+			
+			
+			
+			BufferedImage SubImgage = originalImgage.getSubimage(300, 150, 300, 300);
+			System.out.println("Cropped Image Dimension: "+SubImgage.getWidth()+"x"+SubImgage.getHeight());
+
+			File outputfile = new File("C:/Test/croppedImage.jpg");
+			ImageIO.write(SubImgage, "jpg", outputfile);
+
+			System.out.println("Image cropped successfully: "+outputfile.getPath());
+			
+			
+			
+
+			
+			
+		}catch(Exception e) {
+			
+		}
+		
+	}
+	
+	
+	
+	
+	
+}

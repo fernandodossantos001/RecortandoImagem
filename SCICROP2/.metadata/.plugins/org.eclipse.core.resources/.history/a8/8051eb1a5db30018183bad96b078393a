@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SciCrop</title>
+</head>
+<body>
+	
+	<div>
+		<form action="recortarImagem" method="get">
+			<label for="caminhoImagem">Informe o caminho da Imagem : </label><br/><br/>	
+			<input type="text" name="caminhoImagem" id=""/><br/><br/>	
+			<label for="ondeSalvar">Informe o lugar onde a imagem recortada deve ser salva</label><br/><br/>	
+			<input type="text" name="ondeSalvar" id="ondeSalvar" /><br/><br/>
+			<input type="submit" value="Recortar Imagem"/>
+		</form>
+	</div>
+	
+	<div>
+		<input type="radio" name="gif" value="gif">GIF
+		<input type="radio" name="jpg" value="jpg">JPG
+		<input type="radio" name="png" value="png">PNG
+	</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+package br.com.projeto.scicrop;
+
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet(urlPatterns="recortarImagem")
+public class RecordandoImagemESalvando extends HttpServlet {
+	
+	
+	
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String caminhoImagem = req.getParameter("caminhoImagem");
+		String ondeSalvar = req.getParameter("ondeSalvar");
+		
+		File imagemOriginal = new File(caminhoImagem);
+
+		File imagemRecortada= new File(ondeSalvar);
+		recortar(imagemOriginal, imagemRecortada, 100, 100, "png");
+		
+	}
+
+	
+	private static void recortar(File caminhoImagemOriginal, File ondeSalvarImagemRecordata, int width, int height,String formatoImagem ) {
+		try {
+			//pegando imagem pelo  caminho dela, através do método read da Classe ImageIO onde se passa por parametro o caminho da imagem 
+			BufferedImage original = ImageIO.read(caminhoImagemOriginal);
+			
+			
+			//aqui estou criando uma varias que ira armazenar a imagem recortada
+			//É possível passa no metodo construto da Classe BufferedImage como parametro a largura da imagem "width" a altura "height" e o tipo
+			//que precisa ser passado pegando como referencia a imagem original, pode ser pego o tipo atraves do metodo exemplo, original.getType() e assim passando por parametro
+			BufferedImage imagemRecortada = new BufferedImage(width, height, original.getType());
+			
+			Graphics2D g2 = imagemRecortada.createGraphics();
+			
+			//o primeiro parametro é a imagem original
+			//o segundo e o terceiro parametro sao as cordenada x e y
+			//o quarto parametro é a largura que você quer para a nova imagem
+			//o quinto parametro é a altura que você quer para a nova imagem
+			
+			g2.drawImage(original, 0, 0, width, height, null);
+			g2.dispose();
+			ImageIO.write(imagemRecortada, formatoImagem, ondeSalvarImagemRecordata);
+		} catch (IOException ex) {
+			// TODO: handle exception
+			ex.printStackTrace();
+		}
+	}
+
+}

@@ -1,0 +1,71 @@
+package br.com.projeto.scicrop.web;
+
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet(urlPatterns="/recortarImagem")
+public class RecortaImagem extends HttpServlet{
+	
+	
+		
+		
+		
+		@Override
+		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+			String caminhoImagem = req.getParameter("caminhoImagem");
+			String ondeSalvar = req.getParameter("ondeSalvar");
+			
+			
+			System.out.println("Caminho da Imagem : "  + caminhoImagem);
+			System.out.println("Onde salvar : " + ondeSalvar);
+			
+			File imagemOriginal = new File("C:\\Users\\Fernando\\Desktop\\corinthians.png");
+			File imagemRecortada = new File("C:\\Users\\Fernando\\Desktop\\corinthians2.png");
+			
+			try {
+				if(recortar(imagemOriginal, imagemRecortada, 100, 100, "png")) {
+					System.out.println("Criada com Sucesso");
+				}else {
+					System.out.println("Não foi possível criar imagem");
+				}
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+		}
+		
+		public static boolean recortar
+				(File caminhoImagemOriginal, File ondeSalvarImagem, int width, int height, String formatoImagem) {
+			if(caminhoImagemOriginal != null) {
+			
+				try {
+					BufferedImage imagemOriginal; = ImageIO.read(caminhoImagemOriginal);
+					BufferedImage imagemRecortada = new BufferedImage(width, height, imagemOriginal.getType());
+					Graphics2D g2 = imagemOriginal.createGraphics();
+					g2.drawImage(imagemOriginal,0,0,width,height,null);
+					g2.dispose();
+					
+					ImageIO.write(imagemRecortada, formatoImagem, ondeSalvarImagem);
+					return true;
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
+			}
+		
+			return false;
+		}
+		
+}

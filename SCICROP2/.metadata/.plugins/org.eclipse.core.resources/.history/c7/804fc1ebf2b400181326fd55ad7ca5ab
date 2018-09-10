@@ -1,0 +1,15 @@
+.formulario {
+	width:40%;
+	text-align: center;
+	
+}
+
+.containerx{
+	display:flex;
+	justify-content: center;
+	background: #fff;
+}
+
+body{
+	background: #f4f4f4;
+}

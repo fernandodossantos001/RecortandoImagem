@@ -1,0 +1,8 @@
+.formulario {
+	width:30%;
+}
+
+.containerx{
+	display:flex;
+	justify-content: center;
+}
